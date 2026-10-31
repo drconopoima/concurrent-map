@@ -1,4 +1,4 @@
-# concurrent map [![Build Status](https://travis-ci.com/orcaman/concurrent-map.svg?branch=master)](https://travis-ci.com/orcaman/concurrent-map)
+# concurrent map
 
 As explained [here](http://golang.org/doc/faq#atomic_maps) and [here](http://blog.golang.org/go-maps-in-action), the `map` type in Go doesn't support concurrent reads and writes. `concurrent-map` provides a high-performance solution to this by sharding the map with minimal time spent waiting for locks.
 
@@ -10,13 +10,13 @@ Import the package:
 
 ```go
 import (
-	"github.com/orcaman/concurrent-map/v2"
+	"github.com/drconopoima/concurrent-map/v2"
 )
 
 ```
 
 ```bash
-go get "github.com/orcaman/concurrent-map/v2"
+go get "github.com/drconopoima/concurrent-map/v2"
 ```
 
 The package is now imported under the "cmap" namespace.
@@ -65,7 +65,7 @@ For more examples have a look at concurrent_map_test.go.
 Running tests:
 
 ```bash
-go test "github.com/orcaman/concurrent-map/v2"
+go test "github.com/drconopoima/concurrent-map/v2"
 ```
 
 ## guidelines for contributing
@@ -81,4 +81,4 @@ Contributions are highly welcome. In order for a contribution to be merged, plea
 - [中文说明](./README-zh.md)
 
 ## license
-MIT (see [LICENSE](https://github.com/orcaman/concurrent-map/blob/master/LICENSE) file)
+MIT (see [LICENSE](https://github.com/drconopoima/concurrent-map/blob/master/LICENSE) file)

@@ -1,4 +1,4 @@
-# concurrent map [![Build Status](https://travis-ci.com/orcaman/concurrent-map.svg?branch=master)](https://travis-ci.com/orcaman/concurrent-map)
+# concurrent map
 
 正如 [这里](http://golang.org/doc/faq#atomic_maps) 和 [这里](http://blog.golang.org/go-maps-in-action)所描述的, Go语言原生的`map`类型并不支持并发读写。`concurrent-map`提供了一种高性能的解决方案:通过对内部`map`进行分片，降低锁粒度，从而达到最少的锁等待时间(锁冲突)
 
@@ -11,13 +11,13 @@
 
 ```go
 import (
-	"github.com/orcaman/concurrent-map/v2"
+	"github.com/drconopoima/concurrent-map/v2"
 )
 
 ```
 
 ```bash
-go get "github.com/orcaman/concurrent-map/v2"
+go get "github.com/drconopoima/concurrent-map/v2"
 ```
 
 现在包被导入到了`cmap`命名空间下
@@ -46,7 +46,7 @@ go get "github.com/orcaman/concurrent-map/v2"
 运行测试:
 
 ```bash
-go test "github.com/orcaman/concurrent-map/v2"
+go test "github.com/drconopoima/concurrent-map/v2"
 ```
 
 ## 贡献说明
@@ -59,4 +59,4 @@ go test "github.com/orcaman/concurrent-map/v2"
 - 一般来说，我们希望`concurrent-map`尽可能简单，且与原生的`map`有相似的操作。当你新建issue时请注意这一点。
 
 ## 许可证
-MIT (see [LICENSE](https://github.com/orcaman/concurrent-map/blob/master/LICENSE) file)
+MIT (see [LICENSE](https://github.com/drconopoima/concurrent-map/blob/master/LICENSE) file)
