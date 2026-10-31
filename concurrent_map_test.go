@@ -419,9 +419,9 @@ func TestConcurrent(t *testing.T) {
 }
 
 func TestJsonMarshal(t *testing.T) {
-	SHARD_COUNT = 2
+	DEFAULT_SHARD_COUNT = 2
 	defer func() {
-		SHARD_COUNT = 32
+		DEFAULT_SHARD_COUNT = 32
 	}()
 	expected := "{\"a\":1,\"b\":2}"
 	m := New[int]()
@@ -639,5 +639,21 @@ func TestUnDrainedIterBuffered(t *testing.T) {
 
 	if counter != 200 {
 		t.Error("We should have counted 200 elements.")
+	}
+}
+
+// As long as all constructors are using the same create() function, this test should be enough to verify that all constructors are working.
+func TestPanicsWhenShardCountZero(t *testing.T) {
+	defer func() {
+		if r := recover(); r == nil {
+			t.Fatal("Expected panic when shard count is zero")
+		}
+	}()
+	m := NewWithShardCount[string](0)
+	if m.shards == nil {
+		t.Error("map is null.")
+	}
+	if m.Count() != 0 {
+		t.Error("new map should be empty.")
 	}
 }

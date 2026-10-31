@@ -39,6 +39,27 @@ The package is now imported under the "cmap" namespace.
 
 ```
 
+## Customizing the number of shards
+
+By default, the concurrent map uses 32 shards. You can customize the number of shards to better suit your use case:
+
+```go
+
+	// Create a concurrent map with a custom number of shards.
+	m := cmap.NewWithShardCount[string](64)
+
+	// Create a concurrent map for stringer types with a custom number of shards.
+	m2 := cmap.NewStringerWithShardCount[MyStringerType](128)
+
+	// Create a concurrent map with both a custom number of shards and a custom sharding function.
+	m3 := cmap.NewWithShardCountAndShardingFunction[string](16, myCustomShardingFunc)
+
+```
+
+The `NewWithShardCount` constructor accepts a `uint32` parameter specifying the number of shards. More shards can reduce lock contention in highly concurrent scenarios, but also increase memory overhead. Fewer shards use less memory but may lead to more lock contention.
+
+**Note:** The shard count must be greater than 0, otherwise the constructor will panic.
+
 For more examples have a look at concurrent_map_test.go.
 
 Running tests:
